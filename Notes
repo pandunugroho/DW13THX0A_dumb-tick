@@ -1,0 +1,49 @@
+GET/
+1
+categories
+events?title=keyword
+events?start_time=2019-12-30
+events?start_time=2019-12-31
+2
+category/:id/events
+6
+event/:id
+7
+profile/:id
+user/:id_user/favorites
+9
+orders?status=approved
+
+POST/
+3
+login
+4
+register
+6
+order (/event/:id)X
+10 
+event
+
+
+
+PUT/
+8
+order/:id
+
+
+XXX DELETE/ XXX
+
+
+
+
+
+---generate table------------------------------
+
+npx sequelize-cli model:generate --name categories --attributes name:string
+
+npx sequelize-cli model:generate --name events --attributes title:string,category_id:integer,start_time:string,end_time:string,price:integer,description:text,address:text,url_maps:string,img:string,created_by:integer
+
+npx sequelize-cli model:generate --name users --attributes name:string,email:string,username:string,password:string,is_active:boolean
+
+npx sequelize-cli model:generate --name orders --attributes event_id:integer,quantity:integer,total_price:integer,status:string,attachment:text
+
