@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('orders', {
+    return queryInterface.createTable('favorites', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -26,18 +26,6 @@ module.exports = {
         onDelete: "cascade",
         onUpdate: "cascade"
       },
-      quantity: {
-        type: Sequelize.INTEGER
-      },
-      total_price: {
-        type: Sequelize.INTEGER
-      },
-      status: {
-        type: Sequelize.STRING
-      },
-      attachment: {
-        type: Sequelize.TEXT
-      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
@@ -49,6 +37,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('orders');
+    return queryInterface.dropTable('favorites');
   }
 };

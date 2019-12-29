@@ -1,0 +1,23 @@
+GET http://localhost:8080/categories
+# WORKS
+
+###
+
+GET http://localhost:8080/events
+# WORKS
+
+###
+
+GET http://localhost:8080/category/3/events
+# WORKS, but still can't comprehend it...
+
+###
+
+GET http://localhost:8080/events/2019-12-30
+# WORKS
+
+###
+GET http://localhost:8080/events/2019-12-31
+# WORKS
+
+###

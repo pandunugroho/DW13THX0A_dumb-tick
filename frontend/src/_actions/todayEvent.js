@@ -9,7 +9,7 @@ export const getTodayEvents = () => {
         payload: axios(
             {
                 method: "GET",
-                url: "http://192.168.1.21:8080/events/:start_time" /*backend medium*/
+                url: "http://localhost:8080/events/:start_time" /*backend medium*/
             }
         )
     }

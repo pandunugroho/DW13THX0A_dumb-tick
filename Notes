@@ -1,32 +1,33 @@
-GET/
+## GET/ ###############
 1
-categories
-events?title=keyword
-events?start_time=2019-12-30
-events?start_time=2019-12-31
+categories			v
+events?title=keyword		x
+events?start_time=2019-12-30	x
+events?start_time=2019-12-31	x
 2
-category/:id/events
+category/:id/events		v(belum paham)
 6
-event/:id
+event/:id			v(bisa)
 7
-profile/:id
-user/:id_user/favorites
+profile/:id			x
+user/:id_user/favorites		x
 9
-orders?status=approved
+orders?status=approved		x
 
-POST/
+## POST/ ###############
 3
-login
+login				x
 4
-register
+register			x
 6
-order (/event/:id)X
+order (/event/:id)X		
 10 
-event
+event				v
 
 
 
-PUT/
+
+## PUT/ ###############
 8
 order/:id
 

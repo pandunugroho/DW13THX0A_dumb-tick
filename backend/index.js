@@ -3,7 +3,7 @@ require('express-group-routes');
 const express = require('express');
 const cors = require("cors");
 //init body-parser
-// const bodyParser = require('body-parser')
+const bodyParser = require('body-parser')
 //use express in app variable
 const app = express();
 //define the server port
@@ -13,7 +13,9 @@ app.use(cors());
 // const routers = require('./routers');
 
 // allow this app to recieve incoming json request
-// app.use(bodyParser.json())
+app.use(bodyParser.json()); // support json encoded bodies
+app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
+
 app.use(express.json())
 
 //
@@ -21,7 +23,7 @@ app.use(express.json())
 //
 
 const categoriesController = require("./controllers/categories")
-// const usersController = require("./controllers/users")
+const usersController = require("./controllers/users")
 const eventsController = require('./controllers/events')
 // const ordersController = require('./controllers/orders')
 // const authController = require('./controllers/auth')
@@ -54,7 +56,7 @@ app.group('', (router) => {
 
     //GET
     router.get('/categories', categoriesController.index)
-    router.get('/category/:id/events', categoriesController.indexById)
+    router.get('/category/:id/events', eventsController.indexByCategory)
     router.get('/events', eventsController.index)
     router.get('/events/:start_time', eventsController.indexToday)
 
@@ -62,9 +64,9 @@ app.group('', (router) => {
     // router.get('/events?start_time=2019-12-30', eventsController.index)
     // router.get('/events?start_time=2019-12-31', eventsController.index)
 
-    // router.get('/event/:id', eventsController.index)
-    // router.get('/profile/id', usersController.index)
-    // router.get('/user/:user_id/favorites', usersController.index) //?
+    router.get('/event/:id', eventsController.indexByCategory)
+    router.get('/profile/:id', usersController.profile)
+    router.get('/user/:id/favorites', usersController.favorites) //?
 
     // router.get('/orders?status=approved', ordersController.index)
 

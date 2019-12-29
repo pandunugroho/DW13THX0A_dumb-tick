@@ -2,6 +2,7 @@
 module.exports = (sequelize, DataTypes) => {
   const orders = sequelize.define('orders', {
     event_id: DataTypes.INTEGER,
+    user_id: DataTypes.INTEGER,
     quantity: DataTypes.INTEGER,
     total_price: DataTypes.INTEGER,
     status: DataTypes.STRING,
@@ -12,6 +13,11 @@ module.exports = (sequelize, DataTypes) => {
     orders.belongsTo(models.events, {
       foreignKey: "event_id",
       as: "events",
+      sourceKey: "id"
+    });
+    orders.belongsTo(models.users, {
+      foreignKey: "user_id",
+      as: "users",
       sourceKey: "id"
     });
 
