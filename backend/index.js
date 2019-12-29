@@ -66,7 +66,7 @@ app.group('', (router) => {
 
     router.get('/event/:id', eventsController.indexByCategory)
     router.get('/profile/:id', usersController.profile)
-    router.get('/user/:id/favorites', usersController.favorites) //?
+    router.get('/user/:id/favorites', usersController.favorites)
 
     // router.get('/orders?status=approved', ordersController.index)
 
