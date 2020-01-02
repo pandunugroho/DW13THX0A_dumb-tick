@@ -1,0 +1,40 @@
+POST http://localhost:8080/register
+content-type: application/json
+
+{
+    "name" : "Pandu",
+    "email" : "pandu@gmail.com",
+    "username": "pandun",
+    "password": "1234",
+    "isActive": "1"
+}
+
+# 
+
+###
+
+POST http://localhost:8080/login
+content-type: application/json
+
+{
+    "username": "pandun",
+    "password": "1234"
+}
+
+# 
+
+###
+POST http://localhost:8080/order
+content-type: application/json
+
+{
+    "event_id": "sample",
+    "user_id": "1234",
+    "quantity": "1",
+    "total_price": "300000",
+
+}
+
+# 
+
+###

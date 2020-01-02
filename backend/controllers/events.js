@@ -1,6 +1,8 @@
 const Model = require("../models");
 const Events = Model.events;
 const Categories = Model.categories;
+const Users = Model.users;
+
 
 exports.index = (req, res) => {
     Events.findAll()
@@ -10,10 +12,10 @@ exports.index = (req, res) => {
 };
 
 exports.indexToday = (req, res) => {
-    const { start_time } = req.params;
+    const { startDate } = req.params;
     Events.findAll(
         {
-            where: { start_time }
+            where: { startDate }
         })
         .then(today => {
             res.send(today)
@@ -21,37 +23,85 @@ exports.indexToday = (req, res) => {
         )
 };
 
-exports.indexByCategory = (req, res) => {
+// exports.indexByCategory = (req, res) => {
+//     Events.findAll({
+//         attributes: {
+//             exclude: ["category", "createdAt", "updatedAt"]
+//         },
+//         include: [
+//             {
+//                 model: Categories,
+//                 // as: "categories",
+//                 attributes: ["id", "name"]
+//             },
+//             {
+//                 model: Users,
+//                 // as: "users",
+//                 // attributes: ["id", "name", "noTelp", "email", "img"]
+//             }
+//         ],
+//         where: { id: req.params.id }
+//     }).then(data => res.send(data));
+// };
+
+exports.favorites = (req, res) => {
+    let result = []
     Events.findAll({
         attributes: {
             exclude: ["category", "createdAt", "updatedAt"]
         },
         include: [
-            {
-                model: Categories,
-                as: "categories",
-                attributes: ["id", "name"]
-            },
+            // {
+            //     model: Categories,
+            //     as: "categories",
+            //     attributes: ["id", "name"]
+            // },
             {
                 model: Users,
-                as: "users",
-                attributes: ["id", "name", "noTelp", "email", "img"]
+                // as: "events",
+                // attributes: ["id", "name", "noTelp", "email", "img"]
+                where: { id: req.params.id }
             }
         ],
-        where: { id: req.params.id }
-    }).then(data => res.send(data));
+        
+    }).then(data =>{
+        result.push(data)
+        res.send(result)
+    } )
 };
 
 
 
-// exports.indexByKeyword = (req, res) => {
-//     req.query.keyword !== keyword // 000
-//     Events.findAll({
-//         where: {
-//             title: keyword
-//         }
-//     })
-//         .then(events => {
-//             res.send(events)
-//         })
-// };
+exports.findByTitle = (req, res) => {
+    const {title} = req.query // 000
+    console.log(title + " fdfdffdfdf")
+    Events.findAll({
+        where: {
+            title
+        }
+    })
+        .then(keyword => {
+            res.send(keyword)
+        })
+};
+
+exports.eventDetails = (req, res) => {
+    let result = []
+    const id = req.params.id
+    Events.findOne({
+      where: {
+        id: id
+      },
+      include:[
+          {
+              model: Categories
+          },
+          {
+              model: Users
+          }
+      ]
+    }).then(data => {
+        result.push(data)
+        res.send(result)
+    })
+  };

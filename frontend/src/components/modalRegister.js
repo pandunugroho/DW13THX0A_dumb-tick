@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import {Modal, SimpleModal, Button, TextField} from '@material-ui/core/';
+import { Modal, SimpleModal, Button, TextField } from '@material-ui/core/';
 
 function rand() {
   return Math.round(Math.random() * 20) - 10;
@@ -28,7 +28,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function ModalLogin() {
+export default function ModalRegister() {
   const classes = useStyles();
   // getModalStyle is not a pure function, we roll the style only on the first render
   const [modalStyle] = React.useState(getModalStyle);
@@ -45,7 +45,7 @@ export default function ModalLogin() {
   return (
     <div>
       <Button type="button" onClick={handleOpen}>
-        Login
+        Register
       </Button>
       <Modal
         aria-labelledby="simple-modal-title"
@@ -54,12 +54,16 @@ export default function ModalLogin() {
         onClose={handleClose}
       >
         <div style={modalStyle} className={classes.paper}>
-          <h2 id="simple-modal-title">Login</h2>
+          <h2 id="simple-modal-title">Register</h2>
+          <TextField id="standard-basic" label="Name" fullWidth />
+          &nbsp;
           <TextField id="standard-basic" label="Username" fullWidth />
+          &nbsp;
+          <TextField id="standard-basic" label="Email" fullWidth />
           &nbsp;
           <TextField id="standard-basic" label="Password" fullWidth />
           &nbsp;
-          <Button fullWidth>Login</Button>
+          <Button fullWidth>Register</Button>
         </div>
       </Modal>
     </div>

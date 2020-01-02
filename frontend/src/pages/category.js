@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 import { categories, getCategories } from "../_actions/categories"
 import { connect } from 'react-redux';
 import { Button, Grid } from '@material-ui/core';
+import { Link } from 'react-router-dom'
 
-class Contact extends Component {
+class Category extends Component {
     componentDidMount() {
         this.props.getCategories()
     }
@@ -29,11 +30,25 @@ class Contact extends Component {
         return (
             <div style={{ margin: "0 5vw" }}>
                 <Grid container direction="row">
-                    {data.map((entry, index) => {
+                    {data.slice(0, 4).map((entry, index) => {
                         return (
-                            <div style={{ margin:"0 2vw", backgroundColor: "lightblue" }}>
+                            <div style={{
+                                margin: "0 2vw",
+                                backgroundImage: `url(${entry.imgCategory})`,
+                                backgroundSize: "cover",
+                                backgroundPosition: "center"
+                            }}>
                                 <Grid item>
-                                    <Button  key={index} style={{height:"9vh" ,width:"18vw"}}>{entry.name}</Button>
+                                    <Link to={'/category/' + entry.id + '/events'}>
+                                        <Button
+                                            key={index}
+                                            style={{
+                                                height: "9vh",
+                                                width: "18vw"
+                                            }}>
+                                            {entry.name}
+                                        </Button>
+                                    </Link>
                                 </Grid>
                             </div>
                         )
@@ -58,4 +73,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Contact);
+export default connect(mapStateToProps, mapDispatchToProps)(Category);

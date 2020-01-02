@@ -25,8 +25,12 @@ app.use(express.json())
 const categoriesController = require("./controllers/categories")
 const usersController = require("./controllers/users")
 const eventsController = require('./controllers/events')
-// const ordersController = require('./controllers/orders')
-// const authController = require('./controllers/auth')
+const ordersController = require('./controllers/orders')
+const authController = require('./controllers/auth')
+
+//zTEST------------------------------------------------
+const testsController = require('./controllers/ztests')
+//zTEST------------------------------------------------
 
 app.get('/', (req, res) => {
     res.send("Welcome to My Server. My name is Pandu Nugroho")
@@ -56,29 +60,35 @@ app.group('', (router) => {
 
     //GET
     router.get('/categories', categoriesController.index)
-    router.get('/category/:id/events', eventsController.indexByCategory)
+    router.get('/category/:id/events', categoriesController.indexByCategory)
     router.get('/events', eventsController.index)
-    router.get('/events/:start_time', eventsController.indexToday)
+    router.get('/events_by?:title', eventsController.findByTitle)
+    router.get('/events?startDate=:startDate', eventsController.indexToday)
 
-    // router.get('/events?title=keyword', eventsController.indexByKeyword)
     // router.get('/events?start_time=2019-12-30', eventsController.index)
     // router.get('/events?start_time=2019-12-31', eventsController.index)
 
-    router.get('/event/:id', eventsController.indexByCategory)
+    router.get('/event/:id', eventsController.eventDetails)
     router.get('/profile/:id', usersController.profile)
-    router.get('/user/:id/favorites', usersController.favorites)
+    router.get('/user/:id/favorites', eventsController.favorites)
 
     // router.get('/orders?status=approved', ordersController.index)
 
     // //POST
 
-    // router.post('/login', authController.index)
-    // router.post('/register', authController.index)
-    // router.post('/order', ordersController.index)
+    router.post('/login', authController.login)
+    router.post('/register', authController.register)
+    router.post('/order', ordersController.index)
     // router.post('/event', eventsController.index)
 
     // //PUT
-    // router.post('/order/:id', ordersController.index)
+    // router.put('/order/:id', ordersController.index)
+
+    // //tEST------------------------------------
+    router.post('/event', testsController.testEvent)
+    router.post('/category', testsController.testCategory)
+    router.post('/order', testsController.testOrder)
+    // //----------------------------------------
 });
 
 

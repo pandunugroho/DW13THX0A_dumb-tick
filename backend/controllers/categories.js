@@ -1,6 +1,7 @@
 // const Categories = require('../models').categories;
 const Model = require("../models");
 const Categories = Model.categories;
+const Users = Model.users;
 const Events = Model.events;
 
 
@@ -9,6 +10,27 @@ exports.index = (req, res) => {
     .then(categories => {
       res.send(categories)
     })
+};
+
+exports.indexByCategory = (req, res) => {
+  Events.findAll({
+      // attributes: {
+      //     exclude: ["category", "createdAt", "updatedAt"]
+      // },
+      include: [
+          {
+              model: Categories,
+              where: { id: req.params.id }
+              // as: "categories",
+              // attributes: ["id", "name"]
+          },
+          // {
+          //     model: Users,
+          //     // as: "users",
+          //     // attributes: ["id", "name", "noTelp", "email", "img"]
+          // }
+      ],
+  }).then(data => res.send(data));
 };
 
 // exports.indexById = (req, res) => {

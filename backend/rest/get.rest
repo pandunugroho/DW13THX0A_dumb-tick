@@ -1,0 +1,40 @@
+GET http://localhost:8080/categories
+# WORKS
+
+###
+
+GET http://localhost:8080/events
+# WORKS
+
+###
+GET http://localhost:8080/event/6
+# WORKS
+
+###
+
+GET http://localhost:8080/category/3/events
+# WORKS
+
+###
+
+#GET http://localhost:8080/events?startDate=2019-12-30 00:00:00
+# FROM doesn't work yet... 
+
+###
+#GET http://localhost:8080/events?startDate=2019-12-31 00:00:00
+# FROM doesn't work yet...
+
+###
+GET http://localhost:8080/user/1/favorites
+# not using favorites table...
+
+###
+GET http://localhost:8080/events_by?title=How to Train Your Python
+# WORKS, Search doesn't work yet...
+
+###
+
+GET http://localhost:8080/profile/3
+# WORKS, Search doesn't work yet...
+
+###

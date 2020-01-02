@@ -1,4 +1,4 @@
-import { GET_CATEGORIES, GET_TODAY_EVENTS } from "../config/constants"
+import { GET_CATEGORIES } from "../config/constants"
 
 //membuat global state
 //pure function, gaada function

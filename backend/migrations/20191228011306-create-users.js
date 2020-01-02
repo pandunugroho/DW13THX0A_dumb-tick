@@ -20,7 +20,8 @@ module.exports = {
       password: {
         type: Sequelize.STRING
       },
-      is_active: {
+      isActive: {
+        allowNull: false,
         type: Sequelize.BOOLEAN
       },
       createdAt: {

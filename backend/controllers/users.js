@@ -1,33 +1,17 @@
 const Model = require("../models");
 const Users = Model.users;
+// const Events = Model.events;
 
 exports.profile = (req, res) => {
-    Users.findAll({
-        where: {id}
+    let result=[]
+    Users.findOne({
+        where: {id:req.params.id}
     })
         .then(index => {
-            res.send(index)
+            result.push(index)
+            res.send(result)
         })
 };
 
-exports.favorites = (req, res) => {
-    Events.findAll({
-        attributes: {
-            exclude: ["category", "createdAt", "updatedAt"]
-        },
-        include: [
-            {
-                model: Categories,
-                as: "categories",
-                attributes: ["id", "name"]
-            },
-            {
-                model: Users,
-                as: "users",
-                attributes: ["id", "name", "noTelp", "email", "img"]
-            }
-        ],
-        where: { id: req.params.id }
-    }).then(data => res.send(data));
-};
+
 

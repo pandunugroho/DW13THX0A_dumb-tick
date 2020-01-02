@@ -11,7 +11,7 @@ module.exports = {
       title: {
         type: Sequelize.STRING
       },
-      category_id: {
+      categoryId: {
         type: Sequelize.INTEGER,
         references: {
           model: "categories",
@@ -20,10 +20,16 @@ module.exports = {
         onDelete: "cascade",
         onUpdate: "cascade"
       },
-      start_time: {
+      startDate: {
         type: Sequelize.STRING
       },
-      end_time: {
+      endDate: {
+        type: Sequelize.STRING
+      },
+      startTime: {
+        type: Sequelize.STRING
+      },
+      endTime: {
         type: Sequelize.STRING
       },
       price: {
@@ -35,13 +41,19 @@ module.exports = {
       address: {
         type: Sequelize.TEXT
       },
-      url_maps: {
+      urlMaps: {
         type: Sequelize.STRING
       },
       img: {
         type: Sequelize.STRING
       },
-      created_by: {
+      imgHostedBy: {
+        type: Sequelize.STRING
+      },
+      hostedBy: {
+        type: Sequelize.STRING
+      },
+      createdBy: {
         type: Sequelize.INTEGER,
         references: {
           model: "users",

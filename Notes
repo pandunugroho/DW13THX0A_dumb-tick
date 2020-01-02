@@ -16,9 +16,9 @@ orders?status=approved		x
 
 ## POST/ ###############
 3
-login				x
+login				v(agak paham)
 4
-register			x
+register			v(agak paham)
 6
 order (/event/:id)X		
 10 
@@ -34,6 +34,10 @@ order/:id
 
 XXX DELETE/ XXX
 
+Minus:
+- query params by keyword
+- 
+
 
 
 
@@ -47,4 +51,12 @@ npx sequelize-cli model:generate --name events --attributes title:string,categor
 npx sequelize-cli model:generate --name users --attributes name:string,email:string,username:string,password:string,is_active:boolean
 
 npx sequelize-cli model:generate --name orders --attributes event_id:integer,quantity:integer,total_price:integer,status:string,attachment:text
+
+npx sequelize-cli model:generate --name favorites --attributes user_id:integer,event_id:integer
+
+events: startDate, hostedBy, imgHostedBy.imgMap,
+Categories: imgTheme
+ubah underscore jadi camelcase untuk selain foreignKey
+
+
 

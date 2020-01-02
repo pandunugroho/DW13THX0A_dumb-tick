@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Grid, TextField } from '@material-ui/core';
-import Contact from './contact'
 import TodayEvent from './todayEvent';
+import Category from './category';
 
 
 export default class Homepage extends Component {
@@ -18,7 +18,7 @@ export default class Homepage extends Component {
                     <h1 margin="0">Category</h1>
                 </div>
                 <div>
-                    <Contact />
+                    <Category />
                 </div>
                 <div>
                     <TodayEvent />

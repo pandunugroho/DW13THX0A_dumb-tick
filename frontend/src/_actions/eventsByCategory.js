@@ -1,15 +1,15 @@
-import {GET_TODAY_EVENTS} from "../config/constants"
+import {GET_EVENTS_BY_CATEGORY} from "../config/constants"
 import axios from "axios"
 
 //harus return object, pure return object
 //ada 2 key penting yg digunakan, key type dan payload
-export const getTodayEvents = () => {
+export const getEventsByCategory = (categoryId) => {
     return {
-        type: GET_TODAY_EVENTS,
+        type: GET_EVENTS_BY_CATEGORY,
         payload: axios(
             {
                 method: "GET",
-                url: "http://localhost:8080/events/" /*don't forget to add [+:startTime] */ 
+                url: `http://localhost:8080/category/${categoryId}/events` /*backend medium*/
             }
         )
     }
